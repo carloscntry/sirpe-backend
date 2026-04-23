@@ -4,6 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.database import Base, engine
 from app.routes.user_routes import router as user_router
 from app.routes.zone_routes import router as zone_router
+from app.routes.role_routes import router as role_router
 
 Base.metadata.create_all(bind=engine)
 
@@ -19,6 +20,7 @@ app.add_middleware(
 
 app.include_router(user_router)
 app.include_router(zone_router)
+app.include_router(role_router)
 
 @app.get("/")
 def root():
